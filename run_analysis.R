@@ -2,20 +2,20 @@
 library(dplyr)
 
 #colect feature text for column na
-dtfeature <- read.table("features.txt",header = FALSE)
+dtfeature <- read.table("./UCI HAR Dataset/features.txt",header = FALSE)
 
 # collect test data from folder
-dttest <- read.table("./test/X_test.txt", header = FALSE,col.names = dtfeature[,2] )
-dttestlbl <- read.table("./test/Y_test.txt",header = FALSE,col.names = ("activity"))
-dttestsubject <- read.table("./test/subject_test.txt", header = FALSE,col.names = ("subject"))
+dttest <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE,col.names = dtfeature[,2] )
+dttestlbl <- read.table("./UCI HAR Dataset/test/Y_test.txt",header = FALSE,col.names = ("activity"))
+dttestsubject <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE,col.names = ("subject"))
 
 # collect train data from folder
-dttrain <- read.table("./train/X_train.txt", header = FALSE, col.names = dtfeature[,2])
-dttrainlbl <- read.table("./train/Y_train.txt",header = FALSE,col.names = ("activity"))
-dttrainsubject <- read.table("./train/subject_train.txt", header = FALSE,col.names = ("subject"))
+dttrain <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE, col.names = dtfeature[,2])
+dttrainlbl <- read.table("./UCI HAR Dataset/train/Y_train.txt",header = FALSE,col.names = ("activity"))
+dttrainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE,col.names = ("subject"))
 
 # collecct trainig pattern 
-dtactivity <-  read.table("activity_labels.txt",header = FALSE, col.names = c("activitynnumber","activitynames"))
+dtactivity <-  read.table("./UCI HAR Dataset/activity_labels.txt",header = FALSE, col.names = c("activitynnumber","activitynames"))
 
 # merging test data with activitynames and subjects  
 dt1test = cbind(dttestsubject,dttestlbl,dttest)
