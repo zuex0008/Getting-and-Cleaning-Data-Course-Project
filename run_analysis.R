@@ -37,14 +37,16 @@ dt3 = dt2
 dt3$activity = as.character(dtactivity[dt3$activity,2])
 
 # Ans4 : label varible names with decsriptive names  
-names(dt4) = gsub("std()", "SD", names(dt4))
-names(dt4) = gsub("mean()", "MEAN", names(dt4))
-names(dt4) = gsub("^t", "time", names(dt4))
-names(dt4) = gsub("^f", "frequency", names(dt4))
-names(dt4) = gsub("Acc", "Accelerometer", names(dt4))
-names(dt4) = gsub("Gyro", "Gyroscope", names(dt4))
-names(dt4) = gsub("Mag", "Magnitude", names(dt4))
-names(dt4) = gsub("BodyBody", "Body", names(dt4))
+names(dt3) = gsub("std\\(\\)", "sd", names(dt3))
+names(dt3) = gsub("mean\\(\\)", "mean", names(dt3))
+names(dt3) = gsub("^t", "time", names(dt3))
+names(dt3) = gsub("^f", "frequency", names(dt3))
+names(dt3) = gsub("Acc", "accelerometer", names(dt3))
+names(dt3) = gsub("Gyro", "gyroscope", names(dt3))
+names(dt3) = gsub("Mag", "magnitude", names(dt3))
+names(dt3) = gsub("Body", "body", names(dt3))
+names(dt3) = gsub("Gravity", "gravity", names(dt3))
+names(dt3) = gsub("bodybody", "body", names(dt3))
 
 # Ans5 : create tidy data set with the average of earch activity and subject 
 dt4 = dt3 %>% group_by(activity,subject) %>% summarise_each(funs(mean)) 
